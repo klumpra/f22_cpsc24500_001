@@ -5,6 +5,7 @@ public class App {
         String greeting = "Hello. It is a gloomy Monday.";
         String shouted = greeting.toUpperCase();
         String lowered = greeting.toLowerCase();
+        
         String part = greeting.substring(3,10);
         int location = greeting.indexOf(".");
         char charAtPosition5 = greeting.charAt(5);
