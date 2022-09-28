@@ -19,7 +19,7 @@ public class App {
 				try {
 					choice = sc.nextInt();
 				} catch (Exception ex) {
-					ex.printStackTrace();
+					ex.printStackTrace();  // debugging
 					System.out.println("You needed to enter an int.");
 					sc.nextLine();  // clear out the input
 					System.out.print("Enter an int: ");
