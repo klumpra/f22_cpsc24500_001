@@ -19,6 +19,7 @@ public class App {
 			System.out.printf("%5d",num);
 			count = count + 1;
 		}
+		System.out.println();
 	}
 	public static void printMenu() {
 		System.out.println("Here are your options: ");
