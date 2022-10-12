@@ -1,5 +1,6 @@
 package FunWithNumberArray;
 import java.util.Random;
+import java.util.Arrays;
 public class App {
     public static int count;
     public static int[] nums;
@@ -68,6 +69,29 @@ public class App {
         }
         return -1;
     }
+    /* selection sort
+     * 	start with unsorted list
+     *  you assume the first element is in its right place.
+     *  scan the rest of the list looking for the smallest element
+     *  swap that smallest element with the first one
+     *  repeat for all the other slots in the list
+     */
+    public static void sort() {
+    	int theMin, minPos, temp;
+    	for (int i = 0; i < count; i++) {
+    		theMin = nums[i];
+    		minPos = i;
+    		for (int j = i+1; j < count; j++) {
+    			if (nums[j] < theMin) {
+    				theMin = nums[j];
+    				minPos = j;
+    			}
+    		}
+    		temp = nums[i];
+    		nums[i] = theMin;
+    		nums[minPos] = temp;
+    	}
+    }
     public static void clear() {
         count = 0;
     }
@@ -75,12 +99,12 @@ public class App {
         nums = createOriginalList();
         System.out.println("Insert 17 at position 3");
         insert(17,3);
-        print();
+        /*
         System.out.println("Append 24");
         append(24);
         print();
-        System.out.println("Remove value at position 2");
-        remove(2);
+//        System.out.println("Remove value at position 2");
+//        remove(2);
         print();
         System.out.println("Find 24");
         int foundAt = find(24);
@@ -91,6 +115,12 @@ public class App {
         }
         System.out.println("Clear the list");
         clear();
+        print();
+        */
+        System.out.println("List unsorted: ");
+        print();
+        System.out.println("List sorted");
+        Arrays.sort(nums,0,count);
         print();
     }
 }
