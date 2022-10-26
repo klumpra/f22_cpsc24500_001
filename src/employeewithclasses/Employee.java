@@ -69,4 +69,7 @@ public class Employee {
 		return String.format("%-15s%-15s%10.2f%10.2f %s", firstName, lastName,
 				payRate, hoursWorked, getResponsibilitiesAsString());
 	}
+	public double calculateGrossPay() {
+		return hoursWorked * payRate;
+	}
 }
