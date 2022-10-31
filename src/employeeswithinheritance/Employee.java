@@ -1,6 +1,6 @@
 package employeeswithinheritance;
 
-public class Employee extends Person {
+public class Employee extends Person implements Payable, BenefitsEligible {
 	private double payRate;
 	private double hoursWorked;
 	public double getPayRate() {
@@ -35,8 +35,21 @@ public class Employee extends Person {
 		setHoursWorked(hoursWorked);
 		setPayRate(payRate);
 	}
+	@Override
 	public double calculateGrossPay() {
 		return hoursWorked * payRate;
+	}
+	@Override
+	public  double getHealthBenefitAmount() {
+		return 0;
+	}
+	@Override
+	public double getRetirementBenefitAmount() {
+		return 0;
+	}
+	@Override
+	public String getType() {
+		return "employee";
 	}
 	@Override
 	public String toString() {
