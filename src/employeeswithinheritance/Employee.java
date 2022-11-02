@@ -1,6 +1,6 @@
 package employeeswithinheritance;
 
-public class Employee extends Person implements Payable, BenefitsEligible {
+public class Employee extends Person implements Payable, BenefitsEligible{
 	private double payRate;
 	private double hoursWorked;
 	public double getPayRate() {
