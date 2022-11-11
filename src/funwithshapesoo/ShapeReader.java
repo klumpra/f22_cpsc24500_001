@@ -47,6 +47,7 @@ public class ShapeReader {
 			ArrayList<Shape> shapes = (ArrayList<Shape>)ois.readObject();
 			ois.close();
 			return shapes;
+			
 		} catch (Exception ex) {
 			return null;
 		}
