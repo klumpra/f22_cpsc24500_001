@@ -1,5 +1,7 @@
 package funwithshapesoo;
 
+import java.beans.XMLDecoder;
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
@@ -46,6 +48,16 @@ public class ShapeReader {
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			ArrayList<Shape> shapes = (ArrayList<Shape>)ois.readObject();
 			ois.close();
+			return shapes;
+		} catch (Exception ex) {
+			return null;
+		}
+	}
+	public static ArrayList<Shape> readFromXMLFile(String fname) {
+		try {
+			XMLDecoder dec = new XMLDecoder(new BufferedInputStream(new FileInputStream(new File(fname))));
+			ArrayList<Shape> shapes  = (ArrayList<Shape>)dec.readObject();
+			dec.close();
 			return shapes;
 		} catch (Exception ex) {
 			return null;

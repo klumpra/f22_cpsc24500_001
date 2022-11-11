@@ -37,6 +37,7 @@ public class App {
 			System.out.println("There was an error reading from the file.");
 		}
 		*/
+		/*
 		System.out.println("Now write to a binary file...");
 		System.out.print("Ener name of binary file: ");
 		fname = sc.nextLine();
@@ -48,6 +49,19 @@ public class App {
 			ShapeWriter.writeToScreen(readFromBinary);
 		} else {
 			System.out.println("Could not to write to binary file.");
+		}
+		*/
+		System.out.println("Now write to an xml file...");
+		System.out.print("Ener name of xml file: ");
+		fname = sc.nextLine();
+		ArrayList<Shape> readFromXML;
+		if (ShapeWriter.writeToXML(fname, shapes)) {
+			System.out.println("Written successfully to XML");
+			System.out.println("Now reading them back in ...");
+			readFromXML = ShapeReader.readFromXMLFile(fname);
+			ShapeWriter.writeToScreen(readFromXML);
+		} else {
+			System.out.println("Boo. Failure.");
 		}
 	}
 }

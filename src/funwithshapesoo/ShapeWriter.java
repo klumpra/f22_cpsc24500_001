@@ -1,5 +1,6 @@
 package funwithshapesoo;
 
+import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -7,6 +8,7 @@ import java.io.FileWriter;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.beans.XMLEncoder;
 
 // Shape, Circle, and Rectangler are model classes - they store the data
 // this ShapeWriter is a view class - it helps us see the data inside those model classes
@@ -39,5 +41,14 @@ public class ShapeWriter {
 			return false;
 		}
 	}
-	
+	public static boolean writeToXML(String fname, ArrayList<Shape> shapes) {
+		try {
+			XMLEncoder enc = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(new File(fname))));
+			enc.writeObject(shapes);
+			enc.close();
+			return true;
+		} catch (Exception ex) {
+			return false;
+		}
+	}
 }
