@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.beans.XMLEncoder;
 
+
 // Shape, Circle, and Rectangler are model classes - they store the data
 // this ShapeWriter is a view class - it helps us see the data inside those model classes
 public class ShapeWriter {
