@@ -70,10 +70,13 @@ public class App {
 		fname = sc.nextLine();
 		ArrayList<Shape> readShapesJSON;
         if (ShapeWriter.writeToJSON(fname, shapes)) {
+        	System.out.println("Written successfully.");
+        	/*
             System.out.println("Wrote to json successfully.");
             System.out.println("Now will read back from json...");
             readShapesJSON = ShapeReader.readFromJSON(fname);
             ShapeWriter.writeToScreen(readShapesJSON);
+            */
         } else {
         	System.out.println("Could not write to JSON.");
         }
