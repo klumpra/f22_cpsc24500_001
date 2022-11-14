@@ -1,5 +1,7 @@
 package funwithshapesoo;
 
+import java.util.LinkedHashMap;
+
 public class Rectangle extends Shape {
 	private double width;
 	private double length;
@@ -49,4 +51,13 @@ public class Rectangle extends Shape {
 	public String toString() {
 		return String.format("%s\t%.2f\t%.2f", super.toString(),width,length);
 	}
+
+    @Override
+    public LinkedHashMap<String,String> mapValues() {
+        LinkedHashMap<String,String> result = super.mapValues();
+        result.put("length", String.valueOf(length));
+        result.put("width", String.valueOf(width));
+        return result;
+    }
+
 }

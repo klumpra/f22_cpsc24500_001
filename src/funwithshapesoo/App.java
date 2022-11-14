@@ -51,6 +51,7 @@ public class App {
 			System.out.println("Could not to write to binary file.");
 		}
 		*/
+		/*
 		System.out.println("Now write to an xml file...");
 		System.out.print("Ener name of xml file: ");
 		fname = sc.nextLine();
@@ -63,5 +64,18 @@ public class App {
 		} else {
 			System.out.println("Boo. Failure.");
 		}
+		*/
+        System.out.println("Now write to json...");
+		System.out.print("Enter name of json file: ");
+		fname = sc.nextLine();
+		ArrayList<Shape> readShapesJSON;
+        if (ShapeWriter.writeToJSON(fname, shapes)) {
+            System.out.println("Wrote to json successfully.");
+            System.out.println("Now will read back from json...");
+            readShapesJSON = ShapeReader.readFromJSON(fname);
+            ShapeWriter.writeToScreen(readShapesJSON);
+        } else {
+        	System.out.println("Could not write to JSON.");
+        }
 	}
 }
