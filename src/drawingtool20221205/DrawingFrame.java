@@ -41,24 +41,52 @@ public class DrawingFrame extends JFrame {
         miOpen.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-
+                    	JFileChooser chooser = new JFileChooser();
+                    	ArrayList<Dot> newDots;
+                    	if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                    		newDots = DotReader.fromTextFile(chooser.getSelectedFile());
+                    		if (newDots != null) {
+                    			dots = newDots;
+                    			dpan.setDots(dots);
+                    			repaint();
+                    		}
+                    	}
                     }
                 }
         );
         miSave.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-
+                    	JFileChooser chooser = new JFileChooser();
+                    	if (chooser.showSaveDialog(null)==JFileChooser.APPROVE_OPTION) {
+                    		if (DotWriter.toTextFile(dots, chooser.getSelectedFile())) {
+                    			JOptionPane.showMessageDialog(null, "Successfully saved!");
+                    		} else {
+                    			JOptionPane.showMessageDialog(null, "Unsuccessful.");
+                    		}
+                    	}
                     }
                 }
         );
         miExit.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-
+                    	System.exit(0);
                     }
                 }
-        );  
+        ); 
+        JMenu mnuTools = new JMenu("Tools");
+        mbar.add(mnuTools);
+        JMenuItem miClear = new JMenuItem("Clear");
+        miClear.addActionListener(
+        		new ActionListener() {
+        			public void actionPerformed(ActionEvent e) {
+        				dots.clear();
+        				repaint();
+        			}
+        		}
+        );
+        mnuTools.add(miClear);
     }
     public void setupGUI() {
         setBounds(100,100,500,500);
@@ -97,7 +125,6 @@ public class DrawingFrame extends JFrame {
         // DO THAT HERE
         dpan = new DrawingPanel(dots,5);
         c.add(dpan,BorderLayout.CENTER);
-
     }
     public DrawingFrame() {
     	// TODO: create the dots, call setupGUI(), and set the default close operation

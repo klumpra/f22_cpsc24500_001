@@ -6,6 +6,8 @@ import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.File;
 
 import javax.swing.JButton;
@@ -23,6 +25,8 @@ import javax.swing.JTextField;
 public class TextAndMenuFrame extends JFrame {
 	private Story story;  // the story the frame will be presenting
 	private JTextArea tarStory;  // multiple lines of text; show our story
+	private JTextField txtSentence;
+	private JButton btnSubmit;
 	public void setupMenu() {
 		JMenuBar mbar = new JMenuBar();
 		setJMenuBar(mbar);
@@ -101,8 +105,28 @@ public class TextAndMenuFrame extends JFrame {
 		JPanel panSouth = new JPanel();
 		panSouth.setLayout(new FlowLayout());
 		JLabel labSentence = new JLabel("Enter sentence:");
-		JTextField txtSentence = new JTextField(30);    // 30 m's wide
-		JButton btnSubmit = new JButton("Submit");
+		txtSentence = new JTextField(30);    // 30 m's wide
+		txtSentence.addKeyListener(
+				new KeyListener() {
+					public void keyPressed(KeyEvent e) {
+						String text = txtSentence.getText().trim();
+						if (text.isBlank()) {
+							btnSubmit.setEnabled(false);
+						} else {
+							btnSubmit.setEnabled(true);
+						}
+					}
+					public void keyReleased(KeyEvent e) {
+						
+					}
+					public void keyTyped(KeyEvent e) {
+						
+					}
+				}
+				
+		);
+		btnSubmit = new JButton("Submit");
+		btnSubmit.setEnabled(false);
 		btnSubmit.addActionListener(
 				new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
